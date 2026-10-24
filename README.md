@@ -73,7 +73,7 @@ where it does not apply spends context for nothing.
 
 | Harness | How |
 |---|---|
-| Claude Code | in the project, `claude plugin install identity-skills@pixeloven --scope project`, or add `"identity-skills@pixeloven": true` under `enabledPlugins` in the project's `.claude/settings.json`; use `--scope user` only if you want it in every project |
+| Claude Code | in the project, `claude plugin install identity-skills@pixeloven --scope project` (this writes the `enabledPlugins` entry to the project's `.claude/settings.json`); use `--scope user` only if you want it in every project |
 | pi.dev | git package `git:github.com/pixeloven/identity-skills@vX.Y.Z`, added beside Crew in the project's `packages` |
 | OpenAI Codex | vendor `skills/` into the project's `.agents/skills/` |
 
