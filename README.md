@@ -66,16 +66,22 @@ slot as filled when no registry exists.
 
 ## Install
 
-The marketplace entry is pending; there is no plugin install line yet.
+Install beside Crew from the `pixeloven` marketplace, and enable the pack only
+in the projects where identity work happens. Project scope is the default: an
+enabled pack lists every skill description in every session, so enabling it
+where it does not apply spends context for nothing.
 
 | Harness | How |
 |---|---|
-| Claude Code | load a local checkout with `claude --plugin-dir /absolute/path/to/identity-skills`, or vendor `skills/` into the project |
-| pi.dev | git package `git:github.com/pixeloven/identity-skills@vX.Y.Z`, added beside Crew in `packages` |
-| OpenAI Codex | vendor `skills/` into `.agents/skills/` |
+| Claude Code | in the project, `claude plugin install identity-skills@pixeloven --scope project`, or add `"identity-skills@pixeloven": true` under `enabledPlugins` in the project's `.claude/settings.json`; use `--scope user` only if you want it in every project |
+| pi.dev | git package `git:github.com/pixeloven/identity-skills@vX.Y.Z`, added beside Crew in the project's `packages` |
+| OpenAI Codex | vendor `skills/` into the project's `.agents/skills/` |
+
+To try a local checkout instead, run `claude --plugin-dir /absolute/path/to/identity-skills`.
 
 One identity, three spellings: the repo is `pixeloven/identity-skills`, the
-package is `@pixeloven/identity-skills`, and the plugin is `identity-skills`.
+package is `@pixeloven/identity-skills`, and the plugin installs as
+`identity-skills@pixeloven`.
 Nothing is published to a package registry — releases are git tags.
 
 Install Crew first and follow its quickstarts; this pack adds skills, not setup.
