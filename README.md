@@ -66,16 +66,29 @@ slot as filled when no registry exists.
 
 ## Install
 
-Install beside Crew from the `pixeloven` marketplace, and enable the pack only
-in the projects where identity work happens. Project scope is the default: an
-enabled pack lists every skill description in every session, so enabling it
-where it does not apply spends context for nothing.
+Install the pack at user scope, beside Crew, from the `pixeloven` marketplace,
+so it is available machine-wide in every session. Install Crew
+(`crew@pixeloven`) first.
 
 | Harness | How |
 |---|---|
-| Claude Code | in the project, `claude plugin install identity-skills@pixeloven --scope project` (this writes the `enabledPlugins` entry to the project's `.claude/settings.json`); use `--scope user` only if you want it in every project |
+| Claude Code | `claude plugin install identity-skills@pixeloven --scope user` |
 | pi.dev | git package `git:github.com/pixeloven/identity-skills@vX.Y.Z`, added beside Crew in the project's `packages` |
 | OpenAI Codex | vendor `skills/` into the project's `.agents/skills/` |
+
+User scope is the CLI default and writes
+`"enabledPlugins": { "identity-skills@pixeloven": true }` to
+`~/.claude/settings.json`. Each enabled pack adds its descriptions to the
+always-on skill listing, and Claude Code collapses an over-budget listing to
+names only, which hurts skill selection; the description cost below is the
+price of keeping the pack on everywhere.
+
+To enable the pack only in specific identity repos instead, run
+`claude plugin install identity-skills@pixeloven --scope project` from the
+project root. This writes the same entry to the project's
+`.claude/settings.json`, which you can also edit by hand and commit so the
+whole team gets it. `--scope local` does the same in
+`.claude/settings.local.json` for you alone.
 
 To try a local checkout instead, run `claude --plugin-dir /absolute/path/to/identity-skills`.
 
