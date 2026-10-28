@@ -73,8 +73,8 @@ so it is available machine-wide in every session. Install Crew
 | Harness | How |
 |---|---|
 | Claude Code | `claude plugin install identity-skills@pixeloven --scope user` |
-| pi.dev | git package `git:github.com/pixeloven/identity-skills@vX.Y.Z`, added beside Crew in the project's `packages` |
-| OpenAI Codex | vendor `skills/` into the project's `.agents/skills/` |
+| pi.dev | `pi install git:github.com/pixeloven/identity-skills@vX.Y.Z` |
+| OpenAI Codex | `codex plugin marketplace add pixeloven/marketplace`, then `codex plugin add identity-skills@pixeloven` |
 
 User scope is the CLI default and writes
 `"enabledPlugins": { "identity-skills@pixeloven": true }` to
@@ -82,6 +82,10 @@ User scope is the CLI default and writes
 always-on skill listing, and Claude Code collapses an over-budget listing to
 names only, which hurts skill selection; the description cost below is the
 price of keeping the pack on everywhere.
+
+pi installs globally by default, into `packages` in `~/.pi/agent/settings.json`;
+add `-l` to install into the project's `.pi/settings.json` instead. Codex
+records installed plugins in `~/.codex/config.toml`.
 
 To enable the pack only in specific identity repos instead, run
 `claude plugin install identity-skills@pixeloven --scope project` from the
